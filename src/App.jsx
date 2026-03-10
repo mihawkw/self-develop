@@ -156,7 +156,7 @@ function CoreConcepts() {
         <div className="text-2xl font-bold mb-4 text-mono-100 font-mono">
           <span className="text-terminal-green">掌握程度</span> = (E × R - D) × T
         </div>
-        <div className="grid grid-cols-2 gap-3 text-sm">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-3 text-sm">
           <div className="bg-terminal-bg p-3 border border-terminal-border">
             <span className="text-terminal-blue font-bold">E</span>
             <span className="text-mono-200 ml-1">心力/认知带宽 <span className="text-xs text-mono-300">(Cognitive Bandwidth)</span></span>
@@ -385,7 +385,7 @@ function ArbitrageEngine({ skills, setSkills, defenses, setDefenses, onBlockAllo
                   placeholder="技能名称"
                   className="w-full bg-terminal-bg border border-terminal-border p-2 text-mono-100 placeholder-mono-300 focus:border-terminal-green outline-none"
                 />
-                <div className="grid grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   <div>
                     <label className="text-xs text-mono-300 block mb-1">Beta (β): {newSkill.beta}</label>
                     <input
@@ -457,7 +457,7 @@ function ArbitrageEngine({ skills, setSkills, defenses, setDefenses, onBlockAllo
                         </span>
                       </div>
                       
-                      <div className="grid grid-cols-3 gap-3 mb-2">
+                      <div className="grid grid-cols-1 md:grid-cols-3 gap-3 mb-2">
                         <div>
                           <label className="text-xs text-mono-300">β: {skill.beta}</label>
                           <input
@@ -567,7 +567,7 @@ function ArbitrageEngine({ skills, setSkills, defenses, setDefenses, onBlockAllo
                   placeholder="漏洞名称"
                   className="w-full bg-terminal-bg border border-terminal-border p-2 text-mono-100 placeholder-mono-300 focus:border-terminal-red outline-none"
                 />
-                <div className="grid grid-cols-3 gap-4">
+                <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
                   <div>
                     <label className="text-xs text-mono-300 block mb-1">Lethality (致死率): {newDefense.lethality}</label>
                     <input
@@ -697,7 +697,7 @@ function ArbitrageEngine({ skills, setSkills, defenses, setDefenses, onBlockAllo
               <ShieldAlert className="w-4 h-4 text-terminal-red" />
               <span className="text-mono-300 text-sm font-bold">修复类型说明</span>
             </div>
-            <div className="grid grid-cols-2 gap-4 text-xs">
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-xs">
               <div className="p-3 bg-terminal-blue/10 border border-terminal-blue/30">
                 <div className="flex items-center gap-2 text-terminal-blue font-bold mb-1">
                   <Server className="w-3 h-3" />
@@ -1027,7 +1027,7 @@ function MatrixPanel({ matrix, setMatrix, skills, defenses, onBlockAllocation })
           <Terminal className="w-4 h-4 text-mono-300" />
           <span className="text-mono-300 text-sm font-bold">时间分配汇总 <span className="text-xs font-normal">TIME ALLOCATION SUMMARY</span></span>
         </div>
-        <div className="grid grid-cols-4 gap-2 text-xs">
+        <div className="grid grid-cols-2 md:grid-cols-4 gap-2 text-xs">
           <div className="p-2 bg-terminal-blue/20 border border-terminal-blue/30">
             <div className="text-terminal-blue font-bold">弹性</div>
             <div className="text-mono-300">Patch Block</div>
@@ -1090,34 +1090,34 @@ function App() {
   return (
     <AppContext.Provider value={{ skills, defenses, matrix }}>
       <div className="min-h-screen bg-terminal-bg">
-        <header className="bg-terminal-card border-b border-terminal-border sticky top-0 z-50">
-          <div className="max-w-6xl mx-auto px-4">
-            <div className="flex items-center justify-between h-14">
-              <div className="flex items-center gap-3">
+        <header className="bg-terminal-card border-b border-terminal-border sticky top-0 z-50 overflow-x-auto">
+          <div className="max-w-6xl mx-auto px-2 md:px-4">
+            <div className="flex items-center justify-between h-14 min-w-max">
+              <div className="flex items-center gap-2 md:gap-3 flex-shrink-0">
                 <div className="w-8 h-8 bg-terminal-green flex items-center justify-center">
                   <span className="text-white font-bold text-sm">CAS</span>
                 </div>
-                <div>
+                <div className="hidden sm:block">
                   <h1 className="text-mono-100 font-bold text-sm tracking-wider">CAS ENGINE</h1>
                   <p className="text-mono-300 text-xs">技能套利决策引擎</p>
                 </div>
               </div>
               
-              <nav className="flex">
+              <nav className="flex gap-1 md:gap-0">
                 {tabs.map((tab) => {
                   const Icon = tab.icon
                   return (
                     <button
                       key={tab.id}
                       onClick={() => setActiveTab(tab.id)}
-                      className={`flex items-center gap-2 px-4 py-2 text-sm transition-colors relative ${
+                      className={`flex items-center gap-1 md:gap-2 px-2 md:px-4 py-2 text-xs md:text-sm transition-colors relative whitespace-nowrap ${
                         activeTab === tab.id 
                           ? 'text-terminal-green' 
                           : 'text-mono-300 hover:text-mono-100'
                       }`}
                     >
-                      <Icon className="w-4 h-4" />
-                      <span className="font-medium">{tab.label}</span>
+                      <Icon className="w-3 h-4 md:w-4" />
+                      <span className="font-medium text-xs md:text-sm">{tab.label}</span>
                       {activeTab === tab.id && (
                         <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-terminal-green"></div>
                       )}
@@ -1129,7 +1129,7 @@ function App() {
           </div>
         </header>
 
-        <main className="max-w-6xl mx-auto px-4 py-6">
+        <main className="max-w-6xl mx-auto px-2 md:px-4 py-4 md:py-6 overflow-x-hidden">
           <div className="mb-4 flex items-center gap-2 text-xs text-mono-300">
             <span className="text-terminal-green">●</span>
             <span>系统在线</span>
