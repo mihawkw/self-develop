@@ -1,0 +1,72 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html, body, #root {
+  height: 100%;
+  width: 100%;
+  background-color: #f5f5f5;
+  color: #1a1a1a;
+  font-family: "Microsoft YaHei", "Microsoft YaHei UI", "SimSun", "FangSong", "STFangSong", "SimSun-ExtB", sans-serif;
+}
+
+body {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: "Microsoft YaHei", "Microsoft YaHei UI", sans-serif;
+}
+
+code, pre, .font-mono {
+  font-family: 'JetBrains Mono', 'Fira Code', Consolas, monospace;
+}
+
+::-webkit-scrollbar {
+  width: 6px;
+  height: 6px;
+}
+
+::-webkit-scrollbar-track {
+  background: #f0f0f0;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #999999;
+  border-radius: 3px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #666666;
+}
+
+@layer utilities {
+  .scan-line {
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .scan-line::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #16a34a, transparent);
+    opacity: 0.3;
+    animation: scan 3s linear infinite;
+  }
+  
+  @keyframes scan {
+    0% { transform: translateY(-100%); }
+    100% { transform: translateY(100vh); }
+  }
+}
